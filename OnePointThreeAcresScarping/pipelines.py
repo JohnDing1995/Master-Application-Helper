@@ -7,6 +7,9 @@
 
 import json
 import pymongo
+from scrapy.conf import settings
+from scrapy.exceptions import DropItem
+from scrapy import log
 
 class OnepointthreeacresscarpingPipeline(object):
 
@@ -18,10 +21,25 @@ class OnepointthreeacresscarpingPipeline(object):
         self.file.write(line)
         return item
 
-class MongoDBPipeline(object)
+
+class MongoDBPipeline(object):
 
     def __init__(self):
-        self.mongo_url = "localhost"
-        self.mongo_db = "one_point_three_acres"
+        connection = pymongo.MongoClient(
+            settings['MONGODB_SEVER'],
+            settings['MONGODB_PORT']
+        )
+        db = connection.settings['MONGODB_DBNAME']
+        self.collection =db[settings['MONGODB_COLLECTION']]
 
-    def 
+
+    def process_item(self,item, spider):
+        vaild = True
+        for data in item:
+            if not data:
+                vaild = False
+                raise DropItem('Missing'.format(data))
+            if vaild:
+                self.collection.insert(dict(item))
+                log.msg('Admission information added to the database',level=log.DEBUG,spider=spider)
+        return item
