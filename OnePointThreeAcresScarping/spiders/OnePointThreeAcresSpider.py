@@ -1,5 +1,5 @@
 from scrapy.spiders import Spider
-from scrapy.selector import Selector
+from scrapy.selector import Selector, HtmlXPathSelector
 from scrapy.spider import Spider, Request
 from OnePointThreeAcresScarping.items import AdmissionInformation
 
@@ -29,19 +29,22 @@ class OnePointThreeAcresSpider(Spider):
 
     def parse(self,response):
         pageinformation = response.xpath('//*[@id="threadlisttableid"]')
+        hxs = HtmlXPathSelector(response)
+        march_re = r'">\s*(.*)\<'
         for eachstudent in pageinformation:
             item = AdmissionInformation()
-            item['admission_time'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[1]/text()').extract()
-            item['gre'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[3]/text()').extract()
-            item['gpa'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[5]/text()').extract()
-            item['undergrad_school'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[6]/text()').extract()
-            item['major'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[4]/text()').extract()
-            item['english_grade'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[2]/text()').extract()
-            item['year'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[1]/text()').extract()
-            item['admission_type'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[2]/text()').extract()
-            item['admission_school'] = response.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[5]/text()').extract()
-            item['admission_major'] = response.xpath('//*[contains(@id,"normalthread")]/tr/th/span/u/font[4]/b/text()').extract()
-            item['title'] = response.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]/text()').extract()
+
+            item['admission_time'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[1]').re(r'">\s*(.*)\<')
+            item['gre'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[3]').re(r': \s*(.*)\</font>')
+            item['gpa'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[5]').re(r'">\s*(.*)\<')
+            item['undergrad_school'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[6]').re(r'>(.*)\</font>')
+            item['major'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[4]').re(r'color="green">\s*(.*)\<')
+            item['english_grade'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[2]').re(r'>:\s*(.*)\<')
+            item['year'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/u/font[1]').re(r'\[(.*)\<')
+            item['admission_type'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/u/font[2]').re(r'">\s*(.*)\<')
+            item['admission_school'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/u/font[5]').re(r'">\s*(.*)\<')
+            item['admission_major'] = hxs.select('//*[contains(@id,"normalthread")]/tr/th/span/u/font[4]/b').re(r'<b>\s*(.*)\<')
+            item['title'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]/text()').extract()
             yield item
         next_url = self.get_next_url(response.url)
         if next_url != None:

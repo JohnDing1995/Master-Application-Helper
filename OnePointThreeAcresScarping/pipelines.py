@@ -34,12 +34,7 @@ class MongoDBPipeline(object):
 
 
     def process_item(self,item, spider):
-        vaild = True
         for data in item:
-            if not data:
-                vaild = False
-                raise DropItem('Missing'.format(data))
-            if vaild:
                 self.collection.insert(dict(item))
                 log.msg('Admission information added to the database',level=log.DEBUG,spider=spider)
         return item
