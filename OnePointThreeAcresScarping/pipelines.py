@@ -34,7 +34,25 @@ class MongoDBPipeline(object):
 
 
     def process_item(self,item, spider):
-        for data in item:
-                self.collection.insert(dict(item))
-                log.msg('Admission information added to the database',level=log.DEBUG,spider=spider)
+        item_db = dict(item)
+        #print(item_db)
+        each_record = {}
+        print(type(item_db.items()))
+
+        print(len(item_db['year']))
+
+        for i in range(0,len(item_db['year'])-1):
+            each_record = item_db.copy()
+            for key,each_v in item_db.items():
+
+            #print(type(v))
+            #for k,each_v in v:
+                each_record[key] = each_v[i]
+                #print(each_v[i])
+            #print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            #print(each_record)
+            self.collection.save(each_record)
+        # each_record = {single[0]:single[1][i]}
+        #
+        log.msg('Admission information added to the database',level=log.DEBUG,spider=spider)
         return item

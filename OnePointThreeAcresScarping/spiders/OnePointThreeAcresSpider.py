@@ -13,7 +13,7 @@ class OnePointThreeAcresSpider(Spider):
         l = oldurl.split('-')
         pagenumber = int(l[2].split('.')[0])
         newnumber = pagenumber+1
-        if newnumber <=500:
+        if newnumber <= 1000:
             nexturl = l[0] + "-" + l[1] + "-" + str(newnumber) + ".html"
             return str(nexturl)
         else:
@@ -31,21 +31,21 @@ class OnePointThreeAcresSpider(Spider):
         pageinformation = response.xpath('//*[@id="threadlisttableid"]')
         hxs = HtmlXPathSelector(response)
         march_re = r'">\s*(.*)\<'
-        for eachstudent in pageinformation:
-            item = AdmissionInformation()
+        #for eachstudent in pageinformation:
+        item = AdmissionInformation()
 
-            item['admission_time'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[1]').re(r'">\s*(.*)\<')
-            item['gre'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[3]').re(r': \s*(.*)\</font>')
-            item['gpa'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[5]').re(r'">\s*(.*)\<')
-            item['undergrad_school'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[6]').re(r'>(.*)\</font>')
-            item['major'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[4]').re(r'color="green">\s*(.*)\<')
-            item['english_grade'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/font[2]').re(r'>:\s*(.*)\<')
-            item['year'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/u/font[1]').re(r'\[(.*)\<')
-            item['admission_type'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/u/font[2]').re(r'">\s*(.*)\<')
-            item['admission_school'] = hxs.select('//*[contains(@id, "normalthread")]/tr/th/span/u/font[5]').re(r'">\s*(.*)\<')
-            item['admission_major'] = hxs.select('//*[contains(@id,"normalthread")]/tr/th/span/u/font[4]/b').re(r'<b>\s*(.*)\<')
-            item['title'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]/text()').extract()
-            yield item
+        item['admission_time'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[1]').re(r'">\s*(.*)\<')
+        item['gre'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[3]').re(r': \s*(.*)\</font>')
+        item['gpa'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[5]').re(r'">\s*(.*)\<')
+        item['undergrad_school'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[6]').re(r'>(.*)\</font>')
+        item['major'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[4]').re(r'color="green">\s*(.*)\<')
+        item['english_grade'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[2]').re(r'>:\s*(.*)\<')
+        item['year'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[1]').re(r'\[(.*)\<')
+        item['admission_type'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[2]').re(r'">\s*(.*)\<')
+        item['admission_school'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[5]').re(r'">\s*(.*)\<')
+        item['admission_major'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/span/u/font[4]/b').re(r'<b>\s*(.*)\<')
+        item['title'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]/text()').extract()
+        yield item
         next_url = self.get_next_url(response.url)
         if next_url != None:
             yield Request(next_url)
