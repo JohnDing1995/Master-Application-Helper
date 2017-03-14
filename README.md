@@ -4,7 +4,7 @@ _尚未完成的项目_
 
 计划：做成在线定位系统，与https://github.com/JohnDing1995/WebApp 合并
 
-*I'm planning to combine with another project of mine, combine it with a web app based in flask*
+*I'm planning to combine with another project of mine, a web app based in flask*
 
 ## Requirement 
 
@@ -17,8 +17,17 @@ Pymongo
 ## Usage
 
 1. Clone this repositorie 
+
 2. cd to the root of the project, run `scrapy crawl ad_information`
+
 3. The data will shown in your mongdb database,like this![屏幕快照 2017-03-13 下午10.49.52](http://p1.bqimg.com/4851/6e725b0c04c107f5.png)
+
+4. Yan can query the database as according to your own need
+
+    eg. To find the admissions of CS master@north Carolina state university(NCSU),you can query like this
+
+   ![屏幕快照 2017-03-14 上午9.08.03 1](http://p1.bqimg.com/4851/86b362a890bf11be.png)
+
 
 ## Update log
 
