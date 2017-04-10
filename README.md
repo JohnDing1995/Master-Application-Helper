@@ -35,5 +35,5 @@ Pymongo
   * bug to fix:some void data didn't added to db, which makes fields don't match with each other
 * 2017/3/13 Rewrite Selector modual  with regular expression , now the void data will be stored in the database, and the bug fixed;Optimize the database storage, now each admission information can be stored as a single object
 
-* 2017/4/10 Save the url link of each admission case to db
+* 2017/4/10 Save url link of each admission case to db
 
