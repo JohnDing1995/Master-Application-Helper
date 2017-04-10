@@ -31,15 +31,16 @@ class MongoDBPipeline(object):
         )
         db = connection.settings['MONGODB_DBNAME']
         self.collection =db[settings['MONGODB_COLLECTION']]
+        self.collection.drop()
 
 
     def process_item(self,item, spider):
         item_db = dict(item)
         #print(item_db)
         each_record = {}
-        print(type(item_db.items()))
+        #print(type(item_db.items()))
 
-        print(len(item_db['year']))
+        #print(len(item_db['year']))
 
         for i in range(0,len(item_db['year'])-1):
             each_record = item_db.copy()

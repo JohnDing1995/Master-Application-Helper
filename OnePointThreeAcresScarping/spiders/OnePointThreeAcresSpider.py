@@ -45,6 +45,7 @@ class OnePointThreeAcresSpider(Spider):
         item['admission_school'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[5]').re(r'">\s*(.*)\<')
         item['admission_major'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/span/u/font[4]/b').re(r'<b>\s*(.*)\<')
         item['title'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]/text()').extract()
+        item['link'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]').re(r'\"([^\"]*)')
         yield item
         next_url = self.get_next_url(response.url)
         if next_url != None:
