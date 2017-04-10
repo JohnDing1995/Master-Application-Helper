@@ -16,7 +16,7 @@ Pymongo
 
 ## Usage
 
-1. Clone this repositorie 
+1. Clone this repository 
 
 2. cd to the root of the project, run `scrapy crawl ad_information`
 
