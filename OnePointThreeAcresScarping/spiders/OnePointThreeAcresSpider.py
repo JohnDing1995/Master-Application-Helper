@@ -31,9 +31,9 @@ class OnePointThreeAcresSpider(Spider):
         pageinformation = response.xpath('//*[@id="threadlisttableid"]')
         hxs = HtmlXPathSelector(response)
         march_re = r'">\s*(.*)\<'
+
         #for eachstudent in pageinformation:
         item = AdmissionInformation()
-
         item['admission_time'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[1]').re(r'">\s*(.*)\<')
         item['gre'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[3]').re(r': \s*(.*)\</font>')
         item['gpa'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/font[5]').re(r'">\s*(.*)\<')
@@ -45,7 +45,16 @@ class OnePointThreeAcresSpider(Spider):
         item['admission_school'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[5]').re(r'">\s*(.*)\<')
         item['admission_major'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/span/u/font[4]/b').re(r'<b>\s*(.*)\<')
         item['title'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]/text()').extract()
-        item['link'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]').re(r'href\="([^\"]*)\"')
+
+        links = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]').re(r'href\="([^\"]*)\"')
+        urls_real = []
+        for each in links:
+            urls_real.append(each.replace('&amp;','&'))
+            #print('url is:' + each.replace('&amp;','&'))
+        item['link'] = urls_real
+
+
+
         yield item
         next_url = self.get_next_url(response.url)
         if next_url != None:
