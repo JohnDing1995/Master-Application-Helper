@@ -1,10 +1,7 @@
 _尚未完成的项目_
 
-*This project is unfinished*  
+*This project is unfinished, you can see the following work progress in https://github.com/JohnDing1995/Selecting-Master-Program-USA *  
 
-计划：做成在线定位系统，与https://github.com/JohnDing1995/WebApp 合并
-
-*I'm planning to combine with another project of mine, a web app based in flask*
 
 ## Requirement 
 

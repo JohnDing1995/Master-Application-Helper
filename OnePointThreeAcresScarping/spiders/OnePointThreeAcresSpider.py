@@ -61,6 +61,3 @@ class OnePointThreeAcresSpider(Spider):
             yield Request(next_url)
 
 
-
-
-    # //*[ @ id = "normalthread_244396"]
