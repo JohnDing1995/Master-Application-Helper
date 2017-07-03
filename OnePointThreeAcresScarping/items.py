@@ -24,6 +24,7 @@ class AdmissionInformation(scrapy.Item):
     english_grade = scrapy.Field()  #Toefl or Ielts
     gre = scrapy.Field()
     admission_time = scrapy.Field()
-    year = scrapy.Field() #17fall,18Spring
+    year = scrapy.Field()#17fall,18Spring
+    status = scrapy.Field()
 
     pass

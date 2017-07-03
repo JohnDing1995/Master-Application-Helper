@@ -45,7 +45,7 @@ class OnePointThreeAcresSpider(Spider):
         item['admission_school'] = hxs.xpath('//*[contains(@id, "normalthread")]/tr/th/span/u/font[5]').re(r'">\s*(.*)\<')
         item['admission_major'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/span/u/font[4]/b').re(r'<b>\s*(.*)\<')
         item['title'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]/text()').extract()
-
+        item['status'] = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/span/u/font[3]/b').re('<b>\s*(.*)\<')
         links = hxs.xpath('//*[contains(@id,"normalthread")]/tr/th/a[2]').re(r'href\="([^\"]*)\"')
         urls_real = []
         for each in links:

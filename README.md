@@ -27,8 +27,7 @@ Pymongo
 5. I'm developing a website which provides admission information query service at [Here](https://github.com/JohnDing1995/Selecting-Master-Program-USA  "Title") 
 
 ### Current progress
-![2.png](https://ooo.0o0.ooo/2017/07/03/5959a3473679b.png)
-![1.png](https://ooo.0o0.ooo/2017/07/03/5959a347637fa.png)
+![1.png](https://ooo.0o0.ooo/2017/07/03/5959b76f58d84.png)
 ## Update log
 
 * 2017/3/11 add mongdb data storage,
