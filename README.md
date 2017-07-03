@@ -28,6 +28,7 @@ Pymongo
 
 ### Current progress
 ![1.png](https://ooo.0o0.ooo/2017/07/03/5959b76f58d84.png)
+
 ## Update log
 
 * 2017/3/11 add mongdb data storage,
@@ -36,3 +37,4 @@ Pymongo
 
 * 2017/4/10 Save url link of each admission case to db
 
+* 2017/7/3 Add admission status to db
