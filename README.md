@@ -27,7 +27,11 @@ Pymongo
 5. I'm developing a website which provides admission information query service at [Here](https://github.com/JohnDing1995/Selecting-Master-Program-USA  "Title") 
 
 ### Current progress
+
 ![1.png](https://ooo.0o0.ooo/2017/07/03/5959b76f58d84.png)
+update 7/5/2017
+Get ugly UI changed
+![1.png](https://ooo.0o0.ooo/2017/07/05/595bc4e236ef5.png)
 
 ## Update log
 
