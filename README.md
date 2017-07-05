@@ -30,8 +30,9 @@ Pymongo
 
 ![1.png](https://ooo.0o0.ooo/2017/07/03/5959b76f58d84.png)
 update 7/5/2017
-Get ugly UI changed
-![1.png](https://ooo.0o0.ooo/2017/07/05/595bc4e236ef5.png)
+Get the ugly UI changed
+![2.jpg](https://ooo.0o0.ooo/2017/07/05/595c6707533ff.jpg)
+![1.jpg](https://ooo.0o0.ooo/2017/07/05/595c6680dc391.jpg)
 
 ## Update log
 
