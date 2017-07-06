@@ -30,12 +30,9 @@ Pymongo
 
 ### Current progress
 
-![1.png](https://ooo.0o0.ooo/2017/07/03/5959b76f58d84.png)
-update 7/5/2017
-Get the ugly UI changed
 
-![1.jpg](https://ooo.0o0.ooo/2017/07/05/595c6680dc391.jpg)
-http://123.206.99.164/
+
+See http://123.206.99.164/
 ## Update log
 
 * 2017/3/11 add mongdb data storage,
