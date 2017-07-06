@@ -1,6 +1,8 @@
 _尚未完成的项目_
 
-*This project is unfinished, you can see the following work progress in https://github.com/JohnDing1995/Selecting-Master-Program-USA *  
+ **This project is unfinished, you can see the following work progress in https://github.com/JohnDing1995/Selecting-Master-Program-USA** 
+
+**You can now serach admission cases on http://123.206.99.164/** 
 
 
 ## Requirement 
@@ -33,7 +35,7 @@ update 7/5/2017
 Get the ugly UI changed
 
 ![1.jpg](https://ooo.0o0.ooo/2017/07/05/595c6680dc391.jpg)
-
+http://123.206.99.164/
 ## Update log
 
 * 2017/3/11 add mongdb data storage,
