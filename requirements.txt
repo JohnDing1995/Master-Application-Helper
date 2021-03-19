@@ -25,7 +25,7 @@ HTMLParser==0.0.2
 idna==2.2
 incremental==16.10.1
 itsdangerous==0.24
-Jinja2==2.9.5
+Jinja2==2.11.3
 lxml==3.7.3
 Mako==1.0.6
 Markdown==2.6.8
