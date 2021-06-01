@@ -67,7 +67,7 @@ threadpool==1.3.2
 Twisted==17.1.0
 typogrify==2.0.7
 Unidecode==0.4.20
-urllib3==1.20
+urllib3==1.26.5
 virtualenv==15.1.0
 w3lib==1.17.0
 webencodings==0.5.1
